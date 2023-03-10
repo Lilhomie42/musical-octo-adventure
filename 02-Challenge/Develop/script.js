@@ -9,11 +9,11 @@ function generatePassword() {
   const lettersLow = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
  
 
-  var userChoice = window.prompt("How many characters would you like your password to contain?");
+  // var userChoice = window.prompt("How many characters would you like your password to contain?");
 
-  if (!userChoice) {
-    return;
-  }
+  // if (!userChoice) {
+  //   return;
+  // }
   
   var password = "";
  
@@ -45,19 +45,11 @@ function generatePassword() {
     userPassword += symbols;
   }
 
+  for (var i = 0; i < passwordRange; i++) {
+    var index = Math.floor(Math.random()* userPassword.length);
 
-
-
-
-
- 
-
- 
- 
-
-
-
-  
+    password += userPassword.charAt(index);
+  }
 
   // Prompt user for PW criteria for length btw 8 to 128
   // PW 8-128 characters
@@ -65,10 +57,7 @@ function generatePassword() {
   // input validation
   // display PW on the textarea
 
-
-
-
-  return "Generate Password";
+  return password;
 }
 
 // Write password to the #password input
