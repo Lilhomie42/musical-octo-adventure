@@ -9,18 +9,27 @@ function generatePassword() {
   const lettersLow = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
  
 
-  var userChoice = window.prompt("How many characters would you like your password to contain?");
+  // var userChoice = window.prompt("How many characters would you like your password to contain?");
 
-  if (!userChoice) {
-    return;
+  // if (!userChoice) {
+  //   return;
+  // }
+  
+  var password = "";
+ 
+  var passwordRange = parseInt(window.prompt ("How many characters would you like your password to contain?"));
+  var addLowCase = window.confirm("Click `OK` if you would like to include lowercase letters?" );
+  var addUpCase = window.confirm("Click `OK` if you would like to include uppercase letters?" );
+  var addNumbers = window.confirm("Click `OK` if you would like to include numbers?" );
+  var addSpecial = window.confirm("Click `OK` if you would like to include special characters?" );
+
+  if (isNaN(passwordRange) || passwordRange < 8 || passwordRange > 128) {
+    window.alert("Password must contain 8 to 128 characters!");
+    return "";
   }
 
-  var x = Number;
 
 
- if (x < 8) {
-  window.alert("Password MUST contain more than 8 characters!");
-} 
  
 
  
