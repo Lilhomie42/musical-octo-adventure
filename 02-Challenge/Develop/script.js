@@ -28,6 +28,15 @@ function generatePassword() {
     return "";
   }
 
+  if (!(addLowCase || addUpCase || addNumbers || addSpecial)) {
+    window.alert("You MUST include one character type!");
+    return "";
+  }
+
+  
+
+
+
 
 
  
