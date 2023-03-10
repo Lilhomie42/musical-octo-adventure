@@ -9,11 +9,11 @@ function generatePassword() {
   const lettersLow = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
  
 
-  // var userChoice = window.prompt("How many characters would you like your password to contain?");
+  var userChoice = window.prompt("How many characters would you like your password to contain?");
 
-  // if (!userChoice) {
-  //   return;
-  // }
+  if (!userChoice) {
+    return;
+  }
   
   var password = "";
  
@@ -33,7 +33,18 @@ function generatePassword() {
     return "";
   }
 
-  
+  let userPassword = ""
+
+  if (addLowCase) {
+  userPassword += lettersLow;
+  }  else if (addUpCase) {
+    userPassword += lettersUp;
+  } else if (addNumbers) {
+    userPassword += nums;
+  } else if (addSpecial) {
+    userPassword += symbols;
+  }
+
 
 
 
