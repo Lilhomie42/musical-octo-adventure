@@ -3,45 +3,50 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-  const nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  const symbols = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", "-", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "{", "}", "~"]
-  const lettersUp = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-  const lettersLow = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
- 
+  const nums = ["0123456789"];
+  const symbols = ["!#$%&'()*+-/:;<=>?@[]{}~'"];
+  const lettersUp = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+  const lettersLow = ["abcdefghijklmnopqrstuvwxyz"];
+  // when i click button the password has commas in password generator. removed commas to avoid more commas generated in textarea.
 
-  // var userChoice = window.prompt("How many characters would you like your password to contain?");
-
-  // if (!userChoice) {
-  //   return;
-  // }
-  
   var password = "";
  
   var passwordRange = parseInt(window.prompt ("How many characters would you like your password to contain?"));
+  console.log(passwordRange);
+  if (Number.isNaN(passwordRange) || passwordRange < 8 || passwordRange > 128) {      // moved if statement to line 16 from line 27 due to js reading top to bottom. Replaced return "" => return null
+    alert("Password must contain 8 to 128 characters!");           // Prompts user to enter a number btw 8 to 128.
+    return null;
+  }
   var addLowCase = window.confirm("Click `OK` if you would like to include lowercase letters?" );
   var addUpCase = window.confirm("Click `OK` if you would like to include uppercase letters?" );
   var addNumbers = window.confirm("Click `OK` if you would like to include numbers?" );
   var addSpecial = window.confirm("Click `OK` if you would like to include special characters?" );
 
-  if (isNaN(passwordRange) || passwordRange < 8 || passwordRange > 128) {
-    window.alert("Password must contain 8 to 128 characters!");
-    return "";
-  }
+// if not a number exit OR password is less than 8 exit OR if password is more than 128 exi.  
 
+  // if (passwordRange < 8 || passwordRange > 128) {
+  //   alert("Password must contain 8 to 128 characters!");
+  //   return null;
+  // }
+  
+// if false (user cancels all window POPUPS)
   if (!(addLowCase || addUpCase || addNumbers || addSpecial)) {
-    window.alert("You MUST include one character type!");
-    return "";
+    alert("You MUST include one character type!");
+    return null;
   }
 
   let userPassword = ""
 
   if (addLowCase) {
-  userPassword += lettersLow;
-  }  else if (addUpCase) {
+  userPassword += lettersLow;           //removed the else from the if statements due to only generated one true statement.
+  }
+   if (addUpCase) {
     userPassword += lettersUp;
-  } else if (addNumbers) {
+  } 
+  if (addNumbers) {
     userPassword += nums;
-  } else if (addSpecial) {
+  } 
+  if (addSpecial) {
     userPassword += symbols;
   }
 
@@ -49,6 +54,7 @@ function generatePassword() {
     var index = Math.floor(Math.random()* userPassword.length);
 
     password += userPassword.charAt(index);
+    console.log(password)
   }
 
   // Prompt user for PW criteria for length btw 8 to 128
